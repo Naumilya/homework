@@ -1,25 +1,18 @@
-import React from 'react'
 import styles from './App.module.css'
+
 import { Header } from './components/Header/Header'
+import { TodoList } from './components/TodoList/TodoList'
 import { TodoPanel } from './components/TodoPanel/TodoPanel'
+import { TodoProvider } from './utils'
 
-const DEFAULT_TODO_LIST = [
-	{ id: 1, name: 'task 1', description: 'description 1', checked: true },
-	{ id: 2, name: 'task 2', description: 'description 1', checked: false },
-	{ id: 3, name: 'task 3', description: 'description 1', checked: false },
-]
-
-export const App = () => {
-	console.log('@todos', DEFAULT_TODO_LIST)
-	const [todos, setTodos] = React.useState(DEFAULT_TODO_LIST)
-	console.log('todos', 'setTodos', todos, setTodos)
-
-	return (
+export const App = () => (
+	<TodoProvider>
 		<div className={styles.app_container}>
 			<div className={styles.container}>
-				<Header todoCount={todos.length} />
-				<TodoPanel />
+				<Header />
+				<TodoPanel mode='add' />
+				<TodoList />
 			</div>
 		</div>
-	)
-}
+	</TodoProvider>
+)
