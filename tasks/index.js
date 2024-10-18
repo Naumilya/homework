@@ -129,3 +129,23 @@
 // console.log(plural(100))
 
 // ? 7
+
+function dirReduc(arr) {
+	const opposite = {
+		NORTH: 'SOUTH',
+		SOUTH: 'NORTH',
+		WEST: 'EAST',
+		EAST: 'WEST',
+	}
+
+	return arr.reduce((acc, val) => {
+		opposite[acc[acc.length - 1]] === val ? acc.pop(val) : acc.push(val)
+		return acc
+	}, [])
+}
+
+console.log(
+	dirReduc(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']) //	['WEST']
+)
+
+console.log(dirReduc(['NORTH', 'WEST', 'SOUTH', 'EAST'])) //['NORTH', 'WEST', 'SOUTH', 'EAST']
