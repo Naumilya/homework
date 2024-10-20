@@ -1,14 +1,13 @@
 import { FC } from 'react'
 import { Todo } from '../../../types'
-
 import { Button } from '../../Button/Button'
 import styles from './TodoItem.module.css'
 
 interface TodoItemProps {
 	todo: Todo
-	checkTodo: (id: Todo['id']) => void
-	deleteTodo: (id: Todo['id']) => void
-	selectTodoIdForEdit: (id: Todo['id']) => void
+	checkTodo: () => void
+	deleteTodo: () => void
+	selectTodoIdForEdit: () => void
 }
 
 export const TodoItem: FC<TodoItemProps> = ({
@@ -27,7 +26,7 @@ export const TodoItem: FC<TodoItemProps> = ({
 						opacity: todo.checked ? 0.5 : 1,
 						textDecoration: todo.checked ? 'line-through' : 'none',
 					}}
-					onClick={() => checkTodo(todo.id)}
+					onClick={checkTodo}
 				>
 					{todo.name}
 				</div>
@@ -36,10 +35,10 @@ export const TodoItem: FC<TodoItemProps> = ({
 				</div>
 			</div>
 			<div className={styles.todo_item_button_container}>
-				<Button color='orange' onClick={() => selectTodoIdForEdit(todo.id)}>
+				<Button color='orange' onClick={selectTodoIdForEdit}>
 					Edit
 				</Button>
-				<Button color='red' onClick={() => deleteTodo(todo.id)}>
+				<Button color='red' onClick={deleteTodo}>
 					Delete
 				</Button>
 			</div>

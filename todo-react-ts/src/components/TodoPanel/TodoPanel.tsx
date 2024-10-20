@@ -1,11 +1,9 @@
 import { ChangeEvent, FC, useState } from 'react'
-
+import { useDispatch } from 'react-redux'
+import { addTodo, changeTodo } from '../../stores/actions'
 import { Todo } from '../../types'
-
-import styles from './TodoPanel.module.css'
-
-import { useTodo } from '../../utils'
 import { Button } from '../Button/Button'
+import styles from './TodoPanel.module.css'
 
 const DEFAULT_TODO = {
 	name: '',
@@ -24,10 +22,8 @@ interface EditTodoPanelProps {
 type TodoPanelProps = AddTodoPanelProps | EditTodoPanelProps
 
 export const TodoPanel: FC<TodoPanelProps> = props => {
-	const { changeTodo, addTodo } = useTodo()
-
-	const isEdit = props.mode == 'edit'
-
+	const dispatch = useDispatch()
+	const isEdit = props.mode === 'edit'
 	const [todo, setTodo] = useState(isEdit ? props.editTodo : DEFAULT_TODO)
 
 	const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -39,11 +35,11 @@ export const TodoPanel: FC<TodoPanelProps> = props => {
 		const todoItem = { name: todo.name, description: todo.description }
 
 		if (isEdit) {
-			return changeTodo(todoItem)
+			dispatch(changeTodo(todoItem))
+		} else {
+			dispatch(addTodo(todoItem))
+			setTodo(DEFAULT_TODO)
 		}
-
-		addTodo(todoItem)
-		setTodo(DEFAULT_TODO)
 	}
 
 	return (
@@ -73,12 +69,11 @@ export const TodoPanel: FC<TodoPanelProps> = props => {
 						/>
 					</label>
 					<div className={styles.button_container}>
-						{!isEdit && (
+						{!isEdit ? (
 							<Button color='blue' onClick={onClick}>
 								ADD
 							</Button>
-						)}
-						{isEdit && (
+						) : (
 							<Button color='orange' onClick={onClick}>
 								EDIT
 							</Button>

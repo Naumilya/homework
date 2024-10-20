@@ -1,10 +1,10 @@
 import { FC } from 'react'
-
-import { useTodo } from '../../utils'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../stores/stores'
 import styles from './Header.module.css'
 
 export const Header: FC = () => {
-	const { todos } = useTodo()
+	const todos = useSelector((state: RootState) => state.todos)
 
 	return (
 		<div className={styles.header_container}>
