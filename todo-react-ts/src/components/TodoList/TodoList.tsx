@@ -1,12 +1,13 @@
 import { FC } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { checkTodo, deleteTodo, selectTodoForEdit } from '../../stores/actions'
-import { RootState } from '../../stores/reducers'
+import { RootState } from '../../stores/stores'
 import { TodoPanel } from '../TodoPanel/TodoPanel'
 import { TodoItem } from './TodoItem/TodoItem'
 
 export const TodoList: FC = () => {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const todos = useSelector((state: RootState) => state.todos)
 	const todoIdForEdit = useSelector((state: RootState) => state.todoIdForEdit)
 

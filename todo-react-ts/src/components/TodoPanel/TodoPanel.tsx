@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { addTodo, changeTodo } from '../../stores/actions'
 import { Todo } from '../../types'
 import { Button } from '../Button/Button'
@@ -22,7 +22,7 @@ interface EditTodoPanelProps {
 type TodoPanelProps = AddTodoPanelProps | EditTodoPanelProps
 
 export const TodoPanel: FC<TodoPanelProps> = props => {
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 	const isEdit = props.mode === 'edit'
 	const [todo, setTodo] = useState(isEdit ? props.editTodo : DEFAULT_TODO)
 
