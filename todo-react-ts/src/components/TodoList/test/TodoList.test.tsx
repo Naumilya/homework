@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import { todoReducer } from '../../stores/reducers'
-import { TodoList } from './TodoList'
+import { todoReducer } from '../../../stores/reducers'
+import { TodoList } from '../TodoList'
 
 const mockStore = (initialState: any) => createStore(todoReducer, initialState)
 
