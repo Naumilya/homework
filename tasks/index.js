@@ -130,22 +130,38 @@
 
 // ? 7
 
-function dirReduc(arr) {
-	const opposite = {
-		NORTH: 'SOUTH',
-		SOUTH: 'NORTH',
-		WEST: 'EAST',
-		EAST: 'WEST',
-	}
+// function dirReduc(arr) {
+// 	const opposite = {
+// 		NORTH: 'SOUTH',
+// 		SOUTH: 'NORTH',
+// 		WEST: 'EAST',
+// 		EAST: 'WEST',
+// 	}
 
-	return arr.reduce((acc, val) => {
-		opposite[acc[acc.length - 1]] === val ? acc.pop(val) : acc.push(val)
-		return acc
-	}, [])
-}
+// 	return arr.reduce((acc, val) => {
+// 		opposite[acc[acc.length - 1]] === val ? acc.pop(val) : acc.push(val)
+// 		return acc
+// 	}, [])
+// }
 
-console.log(
-	dirReduc(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']) //	['WEST']
-)
+// console.log(
+// 	dirReduc(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']) //	['WEST']
+// )
 
-console.log(dirReduc(['NORTH', 'WEST', 'SOUTH', 'EAST'])) //['NORTH', 'WEST', 'SOUTH', 'EAST']
+// console.log(dirReduc(['NORTH', 'WEST', 'SOUTH', 'EAST'])) //['NORTH', 'WEST', 'SOUTH', 'EAST']
+
+// ? 8
+
+// ? 9
+
+// let orderedArray = Array.from({ length: 100 }, (_, i) => i + 1)
+// const missingNumber = 88
+// orderedArray = orderedArray.filter(num => num !== missingNumber)
+
+// function findMissingNumber(arr) {
+// 	const n = 100
+// 	const expSum = (n + (n + 1)) / 2
+// 	console.log(arr)
+// }
+
+// console.log(findMissingNumber(orderedArray))
