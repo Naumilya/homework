@@ -3,14 +3,18 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../stores/stores'
 import styles from './Header.module.css'
 
-export const Header: FC = () => {
+interface HeaderProps {
+	'data-testid'?: string
+}
+
+export const Header: FC<HeaderProps> = ({ 'data-testid': testId }) => {
 	const todos = useSelector((state: RootState) => state.todos)
 
 	return (
-		<div className={styles.header_container}>
+		<header className={styles.header_container} data-testid={testId}>
 			<div className={styles.header_title}>
 				Todo list <b>{todos.length}</b> task(s)
 			</div>
-		</div>
+		</header>
 	)
 }

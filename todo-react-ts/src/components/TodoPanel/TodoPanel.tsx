@@ -19,7 +19,12 @@ interface EditTodoPanelProps {
 	editTodo: Omit<Todo, 'id' | 'checked'>
 }
 
-type TodoPanelProps = AddTodoPanelProps | EditTodoPanelProps
+interface BaseTodoPanelProps {
+	'data-testid'?: string
+}
+
+type TodoPanelProps = BaseTodoPanelProps &
+	(AddTodoPanelProps | EditTodoPanelProps)
 
 export const TodoPanel: FC<TodoPanelProps> = props => {
 	const dispatch = useAppDispatch()
@@ -43,7 +48,10 @@ export const TodoPanel: FC<TodoPanelProps> = props => {
 	}
 
 	return (
-		<div className={styles.todo_panel_container}>
+		<div
+			className={styles.todo_panel_container}
+			data-testid={props['data-testid']}
+		>
 			<div className={styles.fields_container}>
 				<div className={styles.field_container}>
 					<label htmlFor='name'>

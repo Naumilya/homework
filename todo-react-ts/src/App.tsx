@@ -10,9 +10,9 @@ export const App = () => (
 	<Provider store={store}>
 		<div className={styles.app_container}>
 			<div className={styles.container}>
-				<Header />
-				<TodoPanel mode='add' />
-				<TodoList />
+				<Header data-testid='header' />
+				<TodoPanel mode='add' data-testid='todo-panel' />
+				<TodoList data-testid='todo-list' />
 			</div>
 		</div>
 	</Provider>

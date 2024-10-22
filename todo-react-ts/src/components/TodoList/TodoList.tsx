@@ -6,13 +6,17 @@ import { RootState } from '../../stores/stores'
 import { TodoPanel } from '../TodoPanel/TodoPanel'
 import { TodoItem } from './TodoItem/TodoItem'
 
-export const TodoList: FC = () => {
+interface TodoListProps {
+	'data-testid'?: string
+}
+
+export const TodoList: FC<TodoListProps> = ({ 'data-testid': testId }) => {
 	const dispatch = useAppDispatch()
 	const todos = useSelector((state: RootState) => state.todos)
 	const todoIdForEdit = useSelector((state: RootState) => state.todoIdForEdit)
 
 	return (
-		<div>
+		<div data-testid={testId}>
 			{todos.map(todo => {
 				if (todo.id === todoIdForEdit) {
 					return (
