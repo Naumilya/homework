@@ -130,22 +130,66 @@
 
 // ? 7
 
-function dirReduc(arr) {
-	const opposite = {
-		NORTH: 'SOUTH',
-		SOUTH: 'NORTH',
-		WEST: 'EAST',
-		EAST: 'WEST',
-	}
+// function dirReduc(arr) {
+// 	const opposite = {
+// 		NORTH: 'SOUTH',
+// 		SOUTH: 'NORTH',
+// 		WEST: 'EAST',
+// 		EAST: 'WEST',
+// 	}
 
-	return arr.reduce((acc, val) => {
-		opposite[acc[acc.length - 1]] === val ? acc.pop(val) : acc.push(val)
-		return acc
-	}, [])
-}
+// 	return arr.reduce((acc, val) => {
+// 		opposite[acc[acc.length - 1]] === val ? acc.pop(val) : acc.push(val)
+// 		return acc
+// 	}, [])
+// }
 
-console.log(
-	dirReduc(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']) //	['WEST']
-)
+// console.log(
+// 	dirReduc(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']) //	['WEST']
+// )
 
-console.log(dirReduc(['NORTH', 'WEST', 'SOUTH', 'EAST'])) //['NORTH', 'WEST', 'SOUTH', 'EAST']
+// console.log(dirReduc(['NORTH', 'WEST', 'SOUTH', 'EAST'])) //['NORTH', 'WEST', 'SOUTH', 'EAST']
+
+// ? 8
+
+// function openOrSenior(data){
+//   return data.map(([a, b]) => a >= 55 && b > 7 ? 'Senior' : "Open")
+// }
+
+//console.log(openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]));
+
+// ? 9
+
+// let orderedArray = Array.from({ length: 100 }, (_, i) => i + 1)
+// const missingNumber = 13
+// orderedArray = orderedArray.filter(num => num !== missingNumber)
+
+// function findMissingNumber(arr) {
+// 	const maxArr = 100
+// 	const extSum = (maxArr * (maxArr + 1)) / 2
+// 	const sum = arr.reduce((acc, cur) => acc + cur, 0)
+
+// 	return extSum - sum
+// }
+// console.log(findMissingNumber(orderedArray))
+
+// ? 10
+
+// "4556364607935616" --> "############5616"
+// "64607935616" --> "#######5616"
+// "Nananananananananananananananana Batman!" --> "####################################man!"
+// "Skippy" --> "##ippy"
+// "1" --> "1"
+// "" --> ""
+
+// function maskify(str) {
+// 	if (str.length < 5) return str
+// 	return str.slice(0, -4) + str.slice(-4).replaceAll(/./g, '#')
+// }
+
+// console.log(maskify('4556364607935616'))
+// console.log(maskify('64607935616'))
+// console.log(maskify('Nananananananananananananananana Batman!'))
+// console.log(maskify('Skippy'))
+// console.log(maskify('1'))
+// console.log(maskify(''))
